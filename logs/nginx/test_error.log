@@ -1,1 +1,0 @@
-2024/02/07 13:28:44 [error] 21#21: *3 open() "/var/www/test/youtube" failed (2: No such file or directory), client: 172.27.0.1, server: test.local, request: "GET /youtube HTTP/1.1", host: "test.local"
