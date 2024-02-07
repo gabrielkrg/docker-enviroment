@@ -1,0 +1,41 @@
+services:
+  php-fpm:
+    build:
+      context: ./php      
+    volumes:
+      - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}
+    networks:
+      - general-network
+
+  nginx:
+    build:
+      context: ./nginx    
+    ports:
+      - "80:80"
+    volumes:      
+      - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}
+      - ${NGINX_HOST_LOG_PATH}:/var/log/nginx
+      - ./nginx/sites/:/etc/nginx/conf.d
+    networks:
+      - general-network
+    depends_on:
+        - php-fpm
+  
+  mysql:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - general-network
+
+networks:
+  general-network:
+    driver: bridge
+
+volumes:
+  mysql-data:
