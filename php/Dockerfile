@@ -7,7 +7,7 @@ FROM php:${PHP_VERSION}-fpm
 # RUN docker-php-ext-install pdo_mysql
 # RUN docker-php-ext-install mbstring
 
-# Install GD extesion and dependencies
+# Install extesions and dependencies
 # https://docs.docker.com/engine/install/troubleshoot/#specify-dns-servers-for-docker
 RUN apt-get update && apt-get install -y \
     libonig-dev \
