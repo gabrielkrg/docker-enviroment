@@ -6,7 +6,7 @@ services:
         - PHP_VERSION=${PHP_VERSION}
     volumes:
       - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}
-      - ./php/php.ini:/usr/local/etc/php/php.ini
+      # - ./php/php.ini:/usr/local/etc/php/php.ini
     networks:
       - general-network
 
