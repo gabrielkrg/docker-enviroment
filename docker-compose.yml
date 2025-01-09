@@ -6,7 +6,7 @@ services:
         - PHP_VERSION=${PHP_VERSION}
     volumes:
       - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}
-      # - ./php/php.ini:/usr/local/etc/php/php.ini
+      - ./php/php.ini:/usr/local/etc/php/php.ini
     networks:
       - general-network
 
@@ -15,10 +15,12 @@ services:
       context: ./nginx
     ports:
       - "80:80"
+      - "443:443"
     volumes:
       - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}
       - ${NGINX_HOST_LOG_PATH}:/var/log/nginx
       - ./nginx/sites/:/etc/nginx/conf.d
+      - ./nginx/ssl:/etc/nginx/ssl
     networks:
       - general-network
     depends_on:

@@ -10,6 +10,7 @@ FROM php:${PHP_VERSION}-fpm
 # Install extesions and dependencies
 # https://docs.docker.com/engine/install/troubleshoot/#specify-dns-servers-for-docker
 RUN apt-get update && apt-get install -y \
+    vim \
     libonig-dev \
     libfreetype6-dev \
     libjpeg62-turbo-dev \
