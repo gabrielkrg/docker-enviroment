@@ -22,7 +22,8 @@ RUN apt-get update && apt-get install -y \
     pdo_mysql \
     mbstring \
     exif \
-    gd
+    gd \
+    bcmath
 
 # Install Node.js (latest version)
 RUN curl -fsSL https://deb.nodesource.com/setup_current.x | bash - \
