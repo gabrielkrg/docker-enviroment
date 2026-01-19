@@ -15,11 +15,21 @@ RUN apt-get update && apt-get install -y \
     libfreetype6-dev \
     libjpeg62-turbo-dev \
     libpng-dev \
+    curl \
+    git \
+    unzip \
     && docker-php-ext-install mysqli \
     pdo_mysql \
     mbstring \
     exif \
     gd
+
+# Install Node.js (latest version)
+RUN curl -fsSL https://deb.nodesource.com/setup_current.x | bash - \
+    && apt-get install -y nodejs
+
+# Install Composer (latest version)
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # groupmod -o -g 1000 www-data: This command modifies the group with the name www-data to have the group ID (gid) of 1000.
 # usermod -o -u 1000 -g www-data www-data: This command modifies the user with the name www-data to have the user ID (uid) of 1000 and assigns it to the group www-data.
