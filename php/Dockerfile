@@ -23,7 +23,8 @@ RUN apt-get update && apt-get install -y \
     mbstring \
     exif \
     gd \
-    bcmath
+    bcmath \
+    pcntl
 
 # Install Node.js (latest version)
 RUN curl -fsSL https://deb.nodesource.com/setup_current.x | bash - \
