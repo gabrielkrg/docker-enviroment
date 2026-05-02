@@ -33,6 +33,11 @@ RUN curl -fsSL https://deb.nodesource.com/setup_current.x | bash - \
 # Install Composer (latest version)
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
+# Install WP-CLI
+RUN curl -fsSL -o /usr/local/bin/wp https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
+    && chmod +x /usr/local/bin/wp \
+    && wp --info --allow-root
+
 # groupmod -o -g 1000 www-data: This command modifies the group with the name www-data to have the group ID (gid) of 1000.
 # usermod -o -u 1000 -g www-data www-data: This command modifies the user with the name www-data to have the user ID (uid) of 1000 and assigns it to the group www-data.
 # The -o option  allows changing the group ID even if it is already in use by another group.
